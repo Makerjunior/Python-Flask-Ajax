@@ -1,5 +1,5 @@
 
-Esta é uma aplicação Flask que exibe informações sobre carros em uma página da web. A página inicial (`/`) renderiza um arquivo HTML chamado `index.html`. 
+Esta é uma aplicação Flask que exibe informações sobre carros em uma página da web. A rota inicial (`/`) renderiza um arquivo HTML chamado `index.html`. 
 
 Ao acessar a rota `/dados`, a função `get_dados()` retorna uma lista de dicionários contendo informações de carros, como marca, modelo, ano, valor, cor, motor e portas.
 
