@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="carros">
+        <!-- Os dados dos carros serão adicionados aqui dinamicamente -->
+    </div>
+
+    <script>
+        function atualizarDados() {
+            $.ajax({
+                url: '/dados',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var carrosHtml = '';
+
+                    for (var i = 0; i < data.length; i++) {
+                        var carro = data[i];
+                        var carroHtml = '<div class="carro">';
+                        carroHtml += '<h2>' + carro.marca + ' ' + carro.modelo + '</h2>';
+                        carroHtml += '<p><strong>Ano:</strong> ' + carro.ano + '</p>';
+                        carroHtml += '<p><strong>Valor:</strong> R$ ' + carro.valor.toLocaleString('pt-BR') + '</p>';
+                        carroHtml += '<p><strong>Cor:</strong> ' + carro.cor + '</p>';
+                        carroHtml += '<p><strong>Motor:</strong> ' + carro.motor + '</p>';
+                        carroHtml += '<p><strong>Portas:</strong> ' + carro.portas + '</p>';
+                        carroHtml += '</div>';
+
+                        carrosHtml += carroHtml;
+                    }
+
+                    $('#carros').html(carrosHtml);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            setInterval(atualizarDados, 3000); // Atualiza a cada 3 segundos (3000 ms)
+        });
+    </script>
+
+    <style>
+        .carro {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</body>
+</html>
